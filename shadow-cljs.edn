@@ -1,0 +1,23 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ []
+
+ :builds
+ {:ext
+  {:target :esm
+   :output-dir "ext/js"
+   :runtime :custom
+   :modules
+   {:shared
+    {:entries []}
+    :sw
+    {:init-fn demo.sw/init
+     :depends-on #{:shared}}
+    :popup
+    {:init-fn demo.popup/init
+     :depends-on #{:shared}}}}}}
